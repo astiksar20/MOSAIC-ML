@@ -1,0 +1,57 @@
+MOSAIC-ML Random Forest Baseline
+================================
+
+Dataset:
+MH-100K
+
+Samples:
+101,934
+
+Features:
+24,833
+
+Train/Test Split:
+80% / 20%
+
+Training Samples:
+81,547
+
+Testing Samples:
+20,387
+
+Model:
+Random Forest
+
+Number of Trees:
+30
+
+Max Features:
+sqrt
+
+Random State:
+42
+
+Accuracy:
+0.9750331093343797
+
+Classification Report:
+
+Class 0:
+Precision: 0.99
+Recall: 0.98
+F1-score: 0.99
+
+Class 1:
+Precision: 0.86
+Recall: 0.88
+F1-score: 0.87
+
+Macro Average:
+Precision: 0.92
+Recall: 0.93
+F1-score: 0.93
+
+Weighted Average:
+Precision: 0.98
+Recall: 0.98
+F1-score: 0.98
