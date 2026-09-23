@@ -28,6 +28,7 @@ def extract_cve_information(data):
 
         cve = item.get("cve", {})
 
+        # CVE ID
         cve_id = cve.get("id")
 
         # Description
@@ -64,6 +65,7 @@ def extract_cve_information(data):
         weaknesses = cve.get("weaknesses", [])
 
         if weaknesses:
+
             weakness_descriptions = weaknesses[0].get(
                 "description",
                 []
@@ -83,27 +85,49 @@ def extract_cve_information(data):
     return results
 
 
+def search_multiple_components(components):
+
+    all_results = []
+
+    for component in components:
+
+        print("\nSearching NVD for:", component)
+
+        data = search_cve(component)
+
+        results = extract_cve_information(data)
+
+        for result in results:
+            result["searched_component"] = component
+
+        all_results.extend(results)
+
+    return all_results
+
+
 if __name__ == "__main__":
 
-    data = search_cve("Android")
+    # Example Android components
+    components = [
+        "Android Bionic",
+        "Android WebKit"
+    ]
 
-    results = extract_cve_information(data)
+    results = search_multiple_components(components)
 
-    print("NVD lookup successful")
-    print("CVE records returned:", len(results))
+    print("\n==============================")
+    print("MOSAIC-ML CVE/NVD RESULTS")
+    print("==============================")
 
     for item in results:
 
         print("\n------------------------------")
 
+        print("Component:", item["searched_component"])
         print("CVE:", item["cve_id"])
-
         print("CVSS:", item["cvss_score"])
-
         print("Severity:", item["cvss_severity"])
-
         print("CWE:", item["cwe"])
-
         print(
             "Description:",
             item["description"][:200]
