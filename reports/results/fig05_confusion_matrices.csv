@@ -1,0 +1,5 @@
+panel,TN,FP,FN,TP
+Logistic Regression validation,7405,231,50,1100
+Linear SVM validation,7389,247,52,1098
+Random Forest validation,7496,140,93,1057
+"Logistic Regression (selected) FINAL TEST, once",7416,220,66,1085

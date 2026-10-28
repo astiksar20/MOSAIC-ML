@@ -1,0 +1,46 @@
+{
+  "derived_test_metrics": {
+    "specificity": 0.9711891042430592,
+    "npv": 0.9911788291900562,
+    "mcc": 0.8670224022532281,
+    "cohen_kappa": 0.8647190506074204,
+    "n_test": 8787
+  },
+  "inference_timing": {
+    "test_rows": 8787,
+    "batch_seconds": 0.0659497660000028,
+    "ms_per_app": 0.007505379082736178
+  },
+  "example_malicious": {
+    "sha256_prefix": "630b312ec4522c23",
+    "true_label": "MALWARE",
+    "active_features": 20,
+    "by_block": {
+      "Permission": 10,
+      "Intent": 2,
+      "APICall": 8
+    },
+    "ml_probability": 0.9775,
+    "ml_label": "MALWARE",
+    "permissions_in_weighted_set": {
+      "ACCESS_COARSE_LOCATION": 0.716,
+      "WRITE_EXTERNAL_STORAGE": 0.5183,
+      "WRITE_SETTINGS": 0.7267
+    },
+    "R": 0.6537
+  },
+  "example_benign": {
+    "sha256_prefix": "4b8e8214af813e8e",
+    "true_label": "BENIGN",
+    "active_features": 1247,
+    "by_block": {
+      "Permission": 2,
+      "Intent": 0,
+      "APICall": 1245
+    },
+    "ml_probability": 0.0002,
+    "ml_label": "BENIGN",
+    "permissions_in_weighted_set": {},
+    "R": null
+  }
+}

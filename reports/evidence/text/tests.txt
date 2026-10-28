@@ -1,0 +1,52 @@
+1. canonical_permission
+  PASS  android.permission prefix
+  PASS  Permission:: prefix
+  PASS  bare name
+  PASS  lowercase upcased
+
+2. formula correctness on a hand-built dataset
+  PASS  alpha_A
+  PASS  beta_A
+  PASS  r_A=1.0
+  PASS  r_B=0.5
+  PASS  r_C=0.0
+  PASS  r in [0,1] for all
+
+3. R_perm(a) averaging
+  PASS  single perm -> r_A
+  PASS  two perms -> mean
+  PASS  three perms -> mean
+  PASS  score in [0,1]
+  PASS  0-100 is rescale
+
+4. k(a)=0 -> insufficient evidence, NOT zero
+  PASS  score is None
+  PASS  score is NOT 0.0
+  PASS  status flag
+  PASS  k==0
+  PASS  unselected perms only -> None
+  PASS  status flag (unselected)
+
+5. absent / unknown permissions ignored
+  PASS  unknown ignored, k=1
+  PASS  denominator counts only matched
+
+6. no leakage - weights depend only on data passed in
+  PASS  different splits -> different weights
+
+7. serialization round-trip
+  PASS  round-trip preserves r
+  PASS  metadata preserved
+  PASS  stable scores after reload
+
+8. vectorised scorer agrees with per-APK scorer
+  PASS  vectorised == per-APK
+  PASS  k vector matches
+
+9. guards
+  PASS  single-class rejected
+  PASS  missing perm rejected
+  PASS  row mismatch rejected
+
+====================================================
+PASSED 32   FAILED 0

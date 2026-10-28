@@ -1,143 +1,124 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Header } from '../components/Header';
-import { ApkUploader } from '../components/ApkUploader';
-import { AnalysisAnimation } from '../components/AnalysisAnimation';
-import { ResultReveal } from '../components/ResultReveal';
-import { RiskScore } from '../components/RiskScore';
-import { SummaryCards } from '../components/SummaryCards';
-import { MlAnalysis } from '../components/MlAnalysis';
-import { HidsAnalysis } from '../components/HidsAnalysis';
-import { CveAnalysis } from '../components/CveAnalysis';
-import { ApkStaticAnalysis } from '../components/ApkStaticAnalysis';
-import { Explainability } from '../components/Explainability';
-import { Recommendation } from '../components/Recommendation';
-import { Footer } from '../components/Footer';
-import { checkApiHealth, analyzeApk } from '../services/api';
+import { Uploader } from '../components/Uploader';
+import { Coverage } from '../components/Coverage';
+import { MlResult } from '../components/MlResult';
+import { PermissionRisk } from '../components/PermissionRisk';
+import { CveResult } from '../components/CveResult';
+import { HidsResult } from '../components/HidsResult';
+import { Assessment } from '../components/Assessment';
+import { History } from '../components/History';
+import { checkApiHealth, analyzeApk, fetchHistory } from '../services/api';
 
 export const DashboardPage = () => {
-  const [isOnline, setIsOnline] = useState(true);
-  const [isCheckingHealth, setIsCheckingHealth] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [online, setOnline] = useState(false);
+  const [checking, setChecking] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [analysisResult, setAnalysisResult] = useState(null);
-  const [analyzedFileName, setAnalyzedFileName] = useState('');
-
+  const [result, setResult] = useState(null);
+  const [history, setHistory] = useState(null);
   const resultRef = useRef(null);
 
-  const handleCheckHealth = async () => {
-    setIsCheckingHealth(true);
+  const health = useCallback(async () => {
+    setChecking(true);
     try {
-      const status = await checkApiHealth();
-      setIsOnline(status.online);
-    } catch (err) {
-      setIsOnline(false);
+      const s = await checkApiHealth();
+      setOnline(Boolean(s.online));
+    } catch {
+      setOnline(false);
     } finally {
-      setIsCheckingHealth(false);
+      setChecking(false);
     }
-  };
-
-  useEffect(() => {
-    handleCheckHealth();
-    const interval = setInterval(handleCheckHealth, 30000);
-    return () => clearInterval(interval);
   }, []);
 
-  const handleAnalyzeFile = async (file) => {
-    setIsLoading(true);
-    setError(null);
-    setAnalyzedFileName(file.name);
-    setAnalysisResult(null);
+  const loadHistory = useCallback(async () => {
+    try { setHistory(await fetchHistory(10)); } catch { /* storage optional */ }
+  }, []);
 
+  useEffect(() => {
+    health();
+    loadHistory();
+    const t = setInterval(health, 30000);
+    return () => clearInterval(t);
+  }, [health, loadHistory]);
+
+  const analyse = async (file) => {
+    setLoading(true); setError(null); setResult(null);
     try {
       const data = await analyzeApk(file);
-      setAnalysisResult(data);
-
-      // Smooth scroll to results reveal
-      setTimeout(() => {
-        if (resultRef.current) {
-          resultRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 300);
+      setResult(data);
+      loadHistory();
+      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth' }), 200);
     } catch (err) {
-      console.error('Analysis error:', err);
-      setError(err.message || 'Unable to connect to MOSAIC-ML backend at http://127.0.0.1:8000.');
+      setError(
+        err?.response?.data?.detail ||
+        err?.message ||
+        'The analysis request failed.'
+      );
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
-  };
-
-  const handleReset = () => {
-    setAnalysisResult(null);
-    setError(null);
-    setAnalyzedFileName('');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between">
-      <div>
-        {/* 1. Header */}
-        <Header
-          isOnline={isOnline}
-          onCheckHealth={handleCheckHealth}
-          isCheckingHealth={isCheckingHealth}
-        />
+    <>
+      <Header online={online} checking={checking} onCheck={health} />
 
-        {/* Spacious Main Container */}
-        <main className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 space-y-12 lg:space-y-16">
-          {/* 2. APK Upload Hero */}
-          <ApkUploader
-            onAnalyze={handleAnalyzeFile}
-            isLoading={isLoading}
-            error={error}
-            isOnline={isOnline}
-            onClearError={() => setError(null)}
-          />
+      <section className="section-first">
+        <div className="shell stack-lg">
+          <div className="stack" style={{ gap: 18 }}>
+            <span className="label">Android vulnerability &amp; intrusion risk analysis</span>
+            <h1 className="display">
+              Static evidence about an<br />Android app, reported honestly.
+            </h1>
+            <p className="lead">
+              Upload an APK. Each signal is reported separately with its own
+              limitations, rather than collapsed into a single verdict.
+            </p>
+          </div>
 
-          {/* 3. Analysis Animation Experience during active API request */}
-          {isLoading && (
-            <AnalysisAnimation fileName={analyzedFileName} />
+          <Uploader onAnalyze={analyse} loading={loading} disabled={!online} />
+
+          {!online && !checking && (
+            <p className="note note-warn">
+              The backend is not reachable. Start it with
+              {' '}<span className="mono">uvicorn api.main:app --port 8000</span>{' '}
+              and check the status above.
+            </p>
           )}
 
-          {/* Analysis Results Flow */}
-          {analysisResult && (
-            <div ref={resultRef} className="space-y-12 lg:space-y-16 animate-fade-in">
-              {/* 4. Result Reveal Banner & Reset Control */}
-              <ResultReveal
-                data={analysisResult}
-                onReset={handleReset}
-              />
+          {error && <p className="note note-warn">{error}</p>}
+        </div>
+      </section>
 
-              {/* 5. Risk Score Centerpiece */}
-              <RiskScore data={analysisResult} />
+      <div ref={resultRef} />
 
-              {/* 6. Executive Summary Cards */}
-              <SummaryCards data={analysisResult} />
+      {result && (
+        <>
+          <Coverage data={result} />
+          <MlResult data={result} />
+          <PermissionRisk data={result} />
+          <CveResult data={result} />
+          <HidsResult data={result} />
+          <Assessment data={result} />
+        </>
+      )}
 
-              {/* 7. Machine Learning Analysis */}
-              <MlAnalysis data={analysisResult} />
+      <History history={history} />
 
-              {/* 8. Host-Based Intrusion Detection (HIDS) */}
-              <HidsAnalysis data={analysisResult} />
-
-              {/* 9. CVE / NVD Intelligence */}
-              <CveAnalysis data={analysisResult} />
-
-              {/* 10. APK Static Analysis */}
-              <ApkStaticAnalysis data={analysisResult} />
-
-              {/* 11. Explainability ("Why did MOSAIC-ML produce this result?") */}
-              <Explainability data={analysisResult} />
-
-              {/* 12. Recommendation ("Recommended Action") */}
-              <Recommendation data={analysisResult} />
-            </div>
-          )}
-        </main>
-      </div>
-
-      {/* 13. Footer */}
-      <Footer />
-    </div>
+      <footer className="section">
+        <div className="shell stack" style={{ gap: 14 }}>
+          <span className="label">Limitations</span>
+          <p className="muted small" style={{ maxWidth: '72ch', lineHeight: 1.75 }}>
+            MOSAIC-ML is an academic prototype. It analyses APKs statically and never
+            executes them. HIDS telemetry is simulated. A CVE keyword match does not
+            establish that an application is affected. A low score means low indicated
+            risk based on available evidence — never that an application is safe. The
+            model was trained on MH-100K (2010–2022) and its behaviour on current
+            applications is untested.
+          </p>
+        </div>
+      </footer>
+    </>
   );
 };

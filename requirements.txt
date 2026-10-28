@@ -1,0 +1,37 @@
+# MOSAIC-ML backend dependencies
+#
+# These versions MATCH THE ENVIRONMENT THE MODELS WERE TRAINED IN.
+# The artifacts in ml/models/ were produced under Python 3.10 with
+# scikit-learn 1.6.1, NumPy 1.26.4 and SciPy 1.15.3. Loading them under a
+# different scikit-learn raises InconsistentVersionWarning and the unpickled
+# estimator is not guaranteed to behave identically - we saw exactly that
+# failure mode during development.
+#
+# If you retrain, update these pins to match the environment you trained in
+# and record the version in reports/results/model_evaluation.json.
+#
+# NumPy is pinned below 2.0 deliberately: arrays pickled under 1.26 are read
+# reliably by 1.26, and mixing major NumPy versions across a pickle boundary
+# is a known source of silent breakage.
+
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+numpy==1.26.4
+scipy==1.15.3
+scikit-learn==1.6.1
+joblib==1.5.3
+
+androguard==4.1.4
+requests==2.32.3
+
+# Optional: only needed when DATABASE_URL points at PostgreSQL.
+# SQLite requires no extra dependency and is the default.
+# psycopg[binary]==3.2.3
+
+# Analysis and figure generation only - NOT needed to serve the API.
+# The Dockerfile installs this file in full; move these two to a separate
+# requirements-dev.txt if image size becomes a concern.
+pandas==2.2.3
+matplotlib==3.9.2

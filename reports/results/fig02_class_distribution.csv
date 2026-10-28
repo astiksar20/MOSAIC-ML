@@ -1,0 +1,3 @@
+class,label_rule,count,percent
+0,vt_detection < 4,92134,90.3859
+1,vt_detection >= 4,9800,9.6141

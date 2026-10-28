@@ -1,0 +1,25 @@
+metric,value
+samples_matrix,101934
+samples_labels_csv,101934
+samples_published,101975
+features_local,24833
+features_published,24833
+matrix_dtype,int8
+is_binary,True
+density,0.07344666
+sparsity_percent,92.6553
+mean_nonzero_per_app,1823.9009
+duplicate_rows,43358
+duplicate_rate_percent,42.5354
+all_zero_rows,0
+block_counts,"{'Permission': 166, 'Intent': 250, 'APICall': 24417}"
+block_counts_match_published,True
+row_alignment_verified,False
+label_mismatches,10505
+samples_dropped_vs_csv,0
+warnings,4
+not_available_items,0
+class_0_count,92134
+class_0_percent,90.3859
+class_1_count,9800
+class_1_percent,9.6141

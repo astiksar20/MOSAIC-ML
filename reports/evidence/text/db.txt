@@ -1,0 +1,6 @@
+Table 'scans' columns: scan_id, created_utc, file_name, apk_sha256, package_name, matched_features, coverage_percent, coverage_reliable, ml_label, ml_probability, permission_score, permission_status, cve_records, cve_failed, risk_score, risk_category, report_json
+
+2026-10-24T01:20:42.881367+00:00 | com.github.yeriomin.smsscheduler_5.apk | b06f8cac3ef7f56a... | BENIGN | 0.0045 | 0.5673 | LOW
+2026-10-24T01:38:24.865631+00:00 | com.github.yeriomin.smsscheduler_5.apk | b06f8cac3ef7f56a... | BENIGN | 0.0045 | 0.5673 | LOW
+
+Total rows: 2

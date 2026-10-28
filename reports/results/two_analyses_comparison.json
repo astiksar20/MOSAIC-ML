@@ -1,0 +1,31 @@
+{
+  "test_n": 8787,
+  "permission_defined": 7460,
+  "permission": {
+    "roc_auc": 0.7734288439429919,
+    "pr_auc": 0.2803669835750749
+  },
+  "ml_full": {
+    "roc_auc": 0.9761921557722599,
+    "pr_auc": 0.8972040217362529
+  },
+  "correlation": 0.300780426696743,
+  "agreement": {
+    "both": {
+      "n": 345,
+      "pct_malware": 86.95652173913044
+    },
+    "ml_only": {
+      "n": 936,
+      "pct_malware": 83.11965811965813
+    },
+    "permission_only": {
+      "n": 779,
+      "pct_malware": 1.4120667522464698
+    },
+    "neither": {
+      "n": 5400,
+      "pct_malware": 0.9259259259259258
+    }
+  }
+}

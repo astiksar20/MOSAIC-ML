@@ -1,0 +1,20 @@
+# Training data - not needed at runtime, 230 MB
+data/mh100k/mh100.npz
+data/mh100k/mh100_labels.csv
+data/processed/
+
+# Build output and caches - the image rebuilds these
+dashboard/node_modules/
+dashboard/dist/
+__pycache__/
+*.pyc
+.git/
+
+# Analysis artifacts
+reports/
+scripts/
+notebooks/
+test_apks/
+
+# Local database
+storage/*.db

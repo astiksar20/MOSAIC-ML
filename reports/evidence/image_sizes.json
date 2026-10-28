@@ -1,0 +1,150 @@
+{
+ "reports/evidence/screens/d04_coverage.png": [
+  2040,
+  795
+ ],
+ "reports/evidence/screens/d08_hids.png": [
+  2040,
+  741
+ ],
+ "reports/evidence/screens/d09_assessment.png": [
+  2040,
+  1007
+ ],
+ "reports/evidence/screens/d03_apk_selected.png": [
+  2040,
+  1290
+ ],
+ "reports/evidence/screens/d01_home.png": [
+  2040,
+  1290
+ ],
+ "reports/evidence/screens/d10_history.png": [
+  2040,
+  650
+ ],
+ "reports/evidence/screens/d02_rejects_fake_apk.png": [
+  2040,
+  1290
+ ],
+ "reports/evidence/screens/d07_cve.png": [
+  2040,
+  812
+ ],
+ "reports/evidence/screens/d05_ml.png": [
+  2040,
+  848
+ ],
+ "reports/evidence/screens/b01_health.png": [
+  1600,
+  208
+ ],
+ "reports/evidence/screens/b02_api.png": [
+  1600,
+  88
+ ],
+ "reports/evidence/screens/d06_permission.png": [
+  2040,
+  1067
+ ],
+ "reports/evidence/screens/b03_scans.png": [
+  1600,
+  184
+ ],
+ "reports/notebook_proof/07_fig4_model_comparison.png": [
+  1821,
+  1332
+ ],
+ "reports/notebook_proof/02_deduplication.png": [
+  1821,
+  450
+ ],
+ "reports/notebook_proof/06_final_test_once.png": [
+  1821,
+  450
+ ],
+ "reports/notebook_proof/05_results_table_and_selection.png": [
+  1821,
+  1146
+ ],
+ "reports/notebook_proof/04_training_9_configs.png": [
+  1821,
+  1088
+ ],
+ "reports/notebook_proof/03_split.png": [
+  1821,
+  348
+ ],
+ "reports/notebook_proof/09_fig6_roc_pr.png": [
+  1821,
+  1058
+ ],
+ "reports/notebook_proof/08_fig5_confusion_matrices.png": [
+  1821,
+  785
+ ],
+ "reports/notebook_proof/11_match_with_shipped.png": [
+  1821,
+  1343
+ ],
+ "reports/notebook_proof/10_fig8_all_configs.png": [
+  1821,
+  1154
+ ],
+ "reports/notebook_proof/01_data_loaded_and_checked.png": [
+  1821,
+  654
+ ],
+ "reports/figures/fig08_tuning_grid.png": [
+  1786,
+  905
+ ],
+ "reports/figures/fig04_model_comparison.png": [
+  2370,
+  1228
+ ],
+ "reports/figures/fig02_class_distribution.png": [
+  1779,
+  744
+ ],
+ "reports/figures/fig05_confusion_matrices.png": [
+  2586,
+  694
+ ],
+ "reports/figures/fig06_roc_pr_curves.png": [
+  2186,
+  914
+ ],
+ "reports/figures/fig11_two_analyses.png": [
+  2286,
+  914
+ ],
+ "reports/figures/fig09_permission_weights.png": [
+  2385,
+  1071
+ ],
+ "reports/figures/fig03_sparsity.png": [
+  1879,
+  744
+ ],
+ "reports/figures/fig10_permission_score_eval.png": [
+  2786,
+  836
+ ],
+ "reports/figures/fig07_threshold_analysis.png": [
+  1686,
+  865
+ ],
+ "reports/figures/paper/fig_p2_pr_curves.png": [
+  1008,
+  703
+ ],
+ "reports/figures/paper/fig_p1_pipeline.png": [
+  850,
+  753
+ ],
+ "reports/figures/paper/fig_p3_two_analyses.png": [
+  992,
+  634
+ ]
+}

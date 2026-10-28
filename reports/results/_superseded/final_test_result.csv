@@ -1,0 +1,2 @@
+model,split,accuracy,balanced_accuracy,macro_f1,malware_precision,malware_recall,malware_f1,false_positive_rate,false_negative_rate,TN,FP,FN,TP,roc_auc,pr_auc,fit_seconds
+Logistic Regression,TEST (once),0.9704108341868669,0.9494031541115544,0.9368221423096026,0.8624898291293734,0.9209383145091226,0.8907563025210085,0.022132006286013618,0.0790616854908775,7467,169,91,1060,0.9762686146694587,0.9021059764357033,44.82

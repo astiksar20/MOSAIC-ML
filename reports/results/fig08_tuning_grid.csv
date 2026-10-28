@@ -1,0 +1,11 @@
+config,family,accuracy,balanced_accuracy,malware_recall,malware_precision,false_positive_rate,fit_seconds
+LR C=1 (baseline),Logistic Regression,0.9731,0.9598,0.9417,0.865,0.0221,50.0
+LR C=1 balanced,Logistic Regression,0.968,0.9631,0.9565,0.8264,0.0303,46.7
+LR C=0.1 balanced,Logistic Regression,0.9678,0.963,0.9565,0.8252,0.0305,37.6
+LR C=10 balanced,Logistic Regression,0.9684,0.963,0.9557,0.8288,0.0297,58.9
+SVM C=1 (baseline),Linear SVM,0.9674,0.9573,0.9435,0.8308,0.0289,93.9
+SVM C=1 balanced,Linear SVM,0.964,0.9594,0.953,0.8071,0.0343,379.1
+SVM C=0.1 balanced,Linear SVM,0.966,0.9612,0.9548,0.8164,0.0323,104.1
+RF 30 (baseline),Random Forest,0.9729,0.9493,0.9174,0.8806,0.0187,59.0
+RF 30 balanced,Random Forest,0.9735,0.9504,0.9191,0.883,0.0183,62.3
+CONTROL active-count,Control,0.945,0.8794,0.7904,0.7897,0.0317,0.0

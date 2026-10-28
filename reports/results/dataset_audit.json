@@ -1,0 +1,191 @@
+{
+  "audit_version": "2.0",
+  "generated_utc": "2026-10-18T22:38:47+00:00",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "files": {
+    "labels_csv": {
+      "path": "data/mh100k/mh100_labels.csv",
+      "exists": true,
+      "size_bytes": 13490587,
+      "modified_utc": "2026-10-18T22:34:46+00:00",
+      "sha256": "f648aa883864eb28104c8c487a522e874a286397472f89ffaa40600d4ec1270e"
+    },
+    "features_csv": {
+      "path": "data/mh100k/mh100-features-all.csv",
+      "exists": true,
+      "size_bytes": 1552706,
+      "modified_utc": "2026-10-18T22:34:46+00:00",
+      "sha256": "f923992d3e026a720242c6f9a99cdf375fdc3fca7069295c83797e1882c68b99"
+    },
+    "matrix_npz": {
+      "path": "data/mh100k/mh100.npz",
+      "exists": true,
+      "size_bytes": 85693791,
+      "modified_utc": "2026-10-18T22:34:46+00:00",
+      "sha256": "4ec6158a3f416f1731c572d6b7a3d89d8418198739e72596592b2b2315174577"
+    },
+    "csr_npz": {
+      "path": "data/processed/mh100_csr.npz",
+      "exists": true,
+      "size_bytes": 135519748,
+      "modified_utc": "2026-10-18T22:36:49+00:00",
+      "sha256": "66ec4cadbcdcf0c0afb670b6aca0049a0c813ec8d7bdf92e126694834afa1d67"
+    }
+  },
+  "labels": {
+    "source": "mh100.npz['classes']",
+    "n_rows": 101934,
+    "class_distribution": {
+      "0": {
+        "count": 92134,
+        "percent": 90.3859
+      },
+      "1": {
+        "count": 9800,
+        "percent": 9.6141
+      }
+    },
+    "imbalance_ratio_majority_to_minority": 9.4014,
+    "label_meaning": "Cross-checked against the CLASS column of mh100_labels.csv by SHA256 in the alignment section. Confirm which integer means malicious against the MH-100K documentation before training."
+  },
+  "feature_matrix": {
+    "npz_keys": [
+      "data",
+      "column_names",
+      "metadata",
+      "metadata_columns",
+      "classes",
+      "sha256"
+    ],
+    "storage": "CSR loaded from mh100_csr.npz",
+    "source_note": "Converted from the dense 'data' array in mh100.npz. The dense form is 2.53 GB in memory, which is the likely cause of the earlier MemoryError during Random Forest training.",
+    "n_rows": 101934,
+    "n_columns": 24833,
+    "dtype": "int8",
+    "stored_nonzeros": 185917518,
+    "density": 0.07344666,
+    "sparsity_percent": 92.6553,
+    "csr_nbytes_estimate": 929995330,
+    "distinct_nonzero_values": 1,
+    "is_binary": true,
+    "min_nonzero": 1.0,
+    "max_value": 1.0
+  },
+  "vocabulary": {
+    "source": "mh100.npz['column_names']",
+    "n_features": 24833,
+    "block_counts": {
+      "Permission": 166,
+      "Intent": 250,
+      "APICall": 24417
+    },
+    "block_source": "Read from the explicit 'Block::Name' prefix in each feature name, not inferred from character patterns.",
+    "published_block_counts": {
+      "permissions": 166,
+      "api_calls": 24417,
+      "intents": 250,
+      "total": 24833
+    },
+    "block_counts_match_published": true,
+    "n_duplicate_feature_names": 0,
+    "duplicate_feature_names": [],
+    "matches_matrix_width": true,
+    "first_5": [
+      "Permission::WAKE_LOCK",
+      "Permission::WRITE_EXTERNAL_STORAGE",
+      "Permission::ACCESS_NETWORK_STATE",
+      "Permission::WRITE_SETTINGS",
+      "Permission::INTERNET"
+    ],
+    "last_5": [
+      "APICall::Landroid/widget/TableRow.getLeft()",
+      "APICall::Landroid/widget/HorizontalScrollView.onKeyUp()",
+      "APICall::Landroid/widget/RatingBar.isFocusable()",
+      "APICall::Landroid/preference/ListPreference.getView()",
+      "APICall::Landroid/widget/LinearLayout.computeHorizontalScrollExtent()"
+    ],
+    "csv_crosscheck": {
+      "header": [
+        "index",
+        "features"
+      ],
+      "n_rows": 24833,
+      "n_names": 24833,
+      "index_column_min": 5,
+      "index_column_max": 24841,
+      "index_column_is_contiguous": false,
+      "name_order_matches_npz": true,
+      "same_set_as_npz": true,
+      "note": "feature_engineering/apk_feature_mapper.py reads this CSV, not the npz. Both must agree for the mapper's vector to line up with the model."
+    }
+  },
+  "row_statistics": {
+    "n_rows": 101934,
+    "all_zero_rows": 0,
+    "nonzero_features_per_app": {
+      "min": 3,
+      "p25": 1198.0,
+      "median": 1993.0,
+      "mean": 1823.9009,
+      "p75": 2501.0,
+      "p99": 4038.0,
+      "max": 6472
+    },
+    "duplicate_rows": 43358,
+    "duplicate_groups": 10137,
+    "unique_rows": 58576,
+    "duplicate_rate_percent": 42.5354,
+    "duplicate_definition": "identical set of active feature indices",
+    "per_class": {
+      "0": {
+        "n_rows": 92134,
+        "mean_nonzero_features": 1988.8009,
+        "median_nonzero_features": 2082.0,
+        "all_zero_rows": 0
+      },
+      "1": {
+        "n_rows": 9800,
+        "mean_nonzero_features": 273.6057,
+        "median_nonzero_features": 42.0,
+        "all_zero_rows": 0
+      }
+    },
+    "feature_frequency_export": "reports/results/feature_frequency_by_class.csv",
+    "feature_frequency_scope": "WHOLE DATASET - exploratory only. Stage 3 alpha/beta MUST be recomputed on the training split alone to avoid leakage.",
+    "nonzero_per_app_export": "reports/results/nonzero_features_per_app.csv"
+  },
+  "alignment": {
+    "matrix_rows": 101934,
+    "npz_classes_rows": 101934,
+    "npz_sha256_rows": 101934,
+    "labels_csv_rows": 101934,
+    "labels_csv_unique_hashes": 101933,
+    "npz_hashes_absent_from_csv": 0,
+    "label_comparisons_made": 101934,
+    "label_mismatches": 10505,
+    "row_alignment_verified": false,
+    "csv_hashes_absent_from_npz": 0,
+    "dropped_sample_hashes_sample": []
+  },
+  "published_comparison": {
+    "published_samples": 101975,
+    "published_features": 24833,
+    "local_matrix_samples": 101934,
+    "local_labels_csv_rows": 101934,
+    "local_features": 24833,
+    "matrix_vs_published_difference": 41,
+    "feature_difference": 0
+  },
+  "not_available": [],
+  "warnings": [
+    "features CSV 'index' column starts at 5, not 0. It is an index into the ORIGINAL dataframe (which included 5 metadata columns), NOT a matrix column position. Using it as a column index would be off by 5.",
+    "43358 duplicate feature rows (42.5354%); duplicates inflate reported accuracy (Molina-Coronado et al. 2023)",
+    "10505 of 101934 rows disagree between npz 'classes' and the CSV CLASS column for the same SHA256 - labels unreliable",
+    "matrix has 41 fewer samples than the published 101975; see alignment.csv_hashes_absent_from_npz"
+  ]
+}

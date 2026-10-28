@@ -1,0 +1,73 @@
+import gc
+import zipfile
+from pathlib import Path
+
+import numpy as np
+import scipy.sparse as sp
+
+src = Path("data/mh100k/mh100.npz")
+out = Path("data/processed")
+out.mkdir(parents=True, exist_ok=True)
+csr_path = out / "mh100_csr.npz"
+meta_path = out / "mh100_meta.npz"
+
+if csr_path.exists():
+    print("Sparse dataset already exists:", csr_path)
+    raise SystemExit(0)
+
+blocks = []
+
+with zipfile.ZipFile(src) as archive:
+    with archive.open("data.npy") as stream:
+        version = np.lib.format.read_magic(stream)
+        shape, fortran, dtype = np.lib.format._read_array_header(stream, version)
+        rows, cols = shape
+        print(f"Streaming matrix: {shape}, dtype={dtype}", flush=True)
+
+        chunk_rows = 1000
+        for start in range(0, rows, chunk_rows):
+            count = min(chunk_rows, rows - start)
+            needed = count * cols * dtype.itemsize
+            parts = []
+            remaining = needed
+
+            while remaining:
+                part = stream.read(min(remaining, 8 * 1024 * 1024))
+                if not part:
+                    raise RuntimeError("Unexpected end of dataset")
+                parts.append(part)
+                remaining -= len(part)
+
+            chunk = np.frombuffer(b"".join(parts), dtype=dtype)
+            chunk = chunk.reshape((count, cols), order="F" if fortran else "C")
+            blocks.append(sp.csr_matrix(chunk))
+            print(f"Processed {start + count:,}/{rows:,} rows", flush=True)
+
+            del chunk, parts
+            gc.collect()
+
+    X = sp.vstack(blocks, format="csr")
+    del blocks
+    gc.collect()
+
+    print("Saving sparse matrix...", flush=True)
+    sp.save_npz(csr_path, X)
+    del X
+    gc.collect()
+
+    def load_member(name):
+        with archive.open(name) as f:
+            return np.lib.format.read_array(f, allow_pickle=True)
+
+    np.savez_compressed(
+        meta_path,
+        column_names=load_member("column_names.npy"),
+        classes=load_member("classes.npy"),
+        sha256=load_member("sha256.npy"),
+        metadata=load_member("metadata.npy"),
+        metadata_columns=load_member("metadata_columns.npy"),
+    )
+
+print("Sparse dataset preparation complete.")
+print("Created:", csr_path)
+print("Created:", meta_path)

@@ -1,0 +1,2 @@
+{"detail":"This file is not a valid Android package. An APK is a ZIP archive, and this file does not begin with a ZIP header."}
+HTTP 400

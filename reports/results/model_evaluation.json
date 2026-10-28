@@ -1,0 +1,394 @@
+{
+  "generated_utc": "2026-10-24T00:53:15Z",
+  "sklearn_version": "1.6.1",
+  "numpy_version": "1.26.4",
+  "scipy_version": "1.15.3",
+  "protocol": {
+    "deduplicated": true,
+    "unique_rows": 58576,
+    "split": "70/15/15 stratified",
+    "seed": 42,
+    "n_train": 41003,
+    "n_val": 8786,
+    "n_test": 8787,
+    "label_rule": "vt_detection >= 4",
+    "selection_metric": "balanced_accuracy on validation",
+    "configurations_tried": 9,
+    "test_evaluated_once": true
+  },
+  "validation_results": [
+    {
+      "config": "LR  C=1    (baseline)",
+      "accuracy": 0.9731,
+      "balanced_accuracy": 0.9598,
+      "macro_f1": 0.9431,
+      "malware_precision": 0.865,
+      "malware_recall": 0.9417,
+      "malware_f1": 0.9017,
+      "false_positive_rate": 0.0221,
+      "false_negative_rate": 0.0583,
+      "confusion_matrix": [
+        [
+          7467,
+          169
+        ],
+        [
+          67,
+          1083
+        ]
+      ],
+      "roc_auc": 0.9796,
+      "pr_auc": 0.9022,
+      "fit_seconds": 50.0,
+      "note": "",
+      "family": "Logistic Regression"
+    },
+    {
+      "config": "LR  C=1    balanced",
+      "accuracy": 0.968,
+      "balanced_accuracy": 0.9631,
+      "macro_f1": 0.9341,
+      "malware_precision": 0.8264,
+      "malware_recall": 0.9565,
+      "malware_f1": 0.8867,
+      "false_positive_rate": 0.0303,
+      "false_negative_rate": 0.0435,
+      "confusion_matrix": [
+        [
+          7405,
+          231
+        ],
+        [
+          50,
+          1100
+        ]
+      ],
+      "roc_auc": 0.9793,
+      "pr_auc": 0.905,
+      "fit_seconds": 46.7,
+      "note": "",
+      "family": "Logistic Regression"
+    },
+    {
+      "config": "LR  C=0.1  balanced",
+      "accuracy": 0.9678,
+      "balanced_accuracy": 0.963,
+      "macro_f1": 0.9336,
+      "malware_precision": 0.8252,
+      "malware_recall": 0.9565,
+      "malware_f1": 0.886,
+      "false_positive_rate": 0.0305,
+      "false_negative_rate": 0.0435,
+      "confusion_matrix": [
+        [
+          7403,
+          233
+        ],
+        [
+          50,
+          1100
+        ]
+      ],
+      "roc_auc": 0.9831,
+      "pr_auc": 0.9215,
+      "fit_seconds": 37.6,
+      "note": "",
+      "family": "Logistic Regression"
+    },
+    {
+      "config": "LR  C=10   balanced",
+      "accuracy": 0.9684,
+      "balanced_accuracy": 0.963,
+      "macro_f1": 0.9347,
+      "malware_precision": 0.8288,
+      "malware_recall": 0.9557,
+      "malware_f1": 0.8877,
+      "false_positive_rate": 0.0297,
+      "false_negative_rate": 0.0443,
+      "confusion_matrix": [
+        [
+          7409,
+          227
+        ],
+        [
+          51,
+          1099
+        ]
+      ],
+      "roc_auc": 0.9762,
+      "pr_auc": 0.8848,
+      "fit_seconds": 58.9,
+      "note": "",
+      "family": "Logistic Regression"
+    },
+    {
+      "config": "SVM C=1    (baseline)",
+      "accuracy": 0.9674,
+      "balanced_accuracy": 0.9573,
+      "macro_f1": 0.9323,
+      "malware_precision": 0.8308,
+      "malware_recall": 0.9435,
+      "malware_f1": 0.8836,
+      "false_positive_rate": 0.0289,
+      "false_negative_rate": 0.0565,
+      "confusion_matrix": [
+        [
+          7415,
+          221
+        ],
+        [
+          65,
+          1085
+        ]
+      ],
+      "roc_auc": 0.9756,
+      "pr_auc": 0.8598,
+      "fit_seconds": 93.9,
+      "note": "",
+      "family": "Linear SVM"
+    },
+    {
+      "config": "SVM C=1    balanced",
+      "accuracy": 0.964,
+      "balanced_accuracy": 0.9594,
+      "macro_f1": 0.9265,
+      "malware_precision": 0.8071,
+      "malware_recall": 0.953,
+      "malware_f1": 0.874,
+      "false_positive_rate": 0.0343,
+      "false_negative_rate": 0.047,
+      "confusion_matrix": [
+        [
+          7374,
+          262
+        ],
+        [
+          54,
+          1096
+        ]
+      ],
+      "roc_auc": 0.9747,
+      "pr_auc": 0.8381,
+      "fit_seconds": 379.1,
+      "note": "",
+      "family": "Linear SVM"
+    },
+    {
+      "config": "SVM C=0.1  balanced",
+      "accuracy": 0.966,
+      "balanced_accuracy": 0.9612,
+      "macro_f1": 0.9302,
+      "malware_precision": 0.8164,
+      "malware_recall": 0.9548,
+      "malware_f1": 0.8802,
+      "false_positive_rate": 0.0323,
+      "false_negative_rate": 0.0452,
+      "confusion_matrix": [
+        [
+          7389,
+          247
+        ],
+        [
+          52,
+          1098
+        ]
+      ],
+      "roc_auc": 0.9767,
+      "pr_auc": 0.8742,
+      "fit_seconds": 104.1,
+      "note": "",
+      "family": "Linear SVM"
+    },
+    {
+      "config": "RF  30     (baseline)",
+      "accuracy": 0.9729,
+      "balanced_accuracy": 0.9493,
+      "macro_f1": 0.9415,
+      "malware_precision": 0.8806,
+      "malware_recall": 0.9174,
+      "malware_f1": 0.8986,
+      "false_positive_rate": 0.0187,
+      "false_negative_rate": 0.0826,
+      "confusion_matrix": [
+        [
+          7493,
+          143
+        ],
+        [
+          95,
+          1055
+        ]
+      ],
+      "roc_auc": 0.9822,
+      "pr_auc": 0.9098,
+      "fit_seconds": 59.0,
+      "note": "",
+      "family": "Random Forest"
+    },
+    {
+      "config": "RF  30     balanced",
+      "accuracy": 0.9735,
+      "balanced_accuracy": 0.9504,
+      "macro_f1": 0.9427,
+      "malware_precision": 0.883,
+      "malware_recall": 0.9191,
+      "malware_f1": 0.9007,
+      "false_positive_rate": 0.0183,
+      "false_negative_rate": 0.0809,
+      "confusion_matrix": [
+        [
+          7496,
+          140
+        ],
+        [
+          93,
+          1057
+        ]
+      ],
+      "roc_auc": 0.9823,
+      "pr_auc": 0.9052,
+      "fit_seconds": 62.3,
+      "note": "",
+      "family": "Random Forest"
+    },
+    {
+      "config": "CONTROL active-count",
+      "accuracy": 0.945,
+      "balanced_accuracy": 0.8794,
+      "macro_f1": 0.8792,
+      "malware_precision": 0.7897,
+      "malware_recall": 0.7904,
+      "malware_f1": 0.7901,
+      "false_positive_rate": 0.0317,
+      "false_negative_rate": 0.2096,
+      "confusion_matrix": [
+        [
+          7394,
+          242
+        ],
+        [
+          241,
+          909
+        ]
+      ],
+      "roc_auc": 0.9452,
+      "pr_auc": 0.7389,
+      "fit_seconds": 0.0,
+      "note": "single input: count of active features",
+      "family": "Control"
+    }
+  ],
+  "best_per_family": {
+    "Logistic Regression": {
+      "config": "LR  C=1    balanced",
+      "accuracy": 0.968,
+      "balanced_accuracy": 0.9631,
+      "macro_f1": 0.9341,
+      "malware_precision": 0.8264,
+      "malware_recall": 0.9565,
+      "malware_f1": 0.8867,
+      "false_positive_rate": 0.0303,
+      "false_negative_rate": 0.0435,
+      "confusion_matrix": [
+        [
+          7405,
+          231
+        ],
+        [
+          50,
+          1100
+        ]
+      ],
+      "roc_auc": 0.9793,
+      "pr_auc": 0.905,
+      "fit_seconds": 46.7,
+      "note": "",
+      "family": "Logistic Regression"
+    },
+    "Linear SVM": {
+      "config": "SVM C=0.1  balanced",
+      "accuracy": 0.966,
+      "balanced_accuracy": 0.9612,
+      "macro_f1": 0.9302,
+      "malware_precision": 0.8164,
+      "malware_recall": 0.9548,
+      "malware_f1": 0.8802,
+      "false_positive_rate": 0.0323,
+      "false_negative_rate": 0.0452,
+      "confusion_matrix": [
+        [
+          7389,
+          247
+        ],
+        [
+          52,
+          1098
+        ]
+      ],
+      "roc_auc": 0.9767,
+      "pr_auc": 0.8742,
+      "fit_seconds": 104.1,
+      "note": "",
+      "family": "Linear SVM"
+    },
+    "Random Forest": {
+      "config": "RF  30     balanced",
+      "accuracy": 0.9735,
+      "balanced_accuracy": 0.9504,
+      "macro_f1": 0.9427,
+      "malware_precision": 0.883,
+      "malware_recall": 0.9191,
+      "malware_f1": 0.9007,
+      "false_positive_rate": 0.0183,
+      "false_negative_rate": 0.0809,
+      "confusion_matrix": [
+        [
+          7496,
+          140
+        ],
+        [
+          93,
+          1057
+        ]
+      ],
+      "roc_auc": 0.9823,
+      "pr_auc": 0.9052,
+      "fit_seconds": 62.3,
+      "note": "",
+      "family": "Random Forest"
+    }
+  },
+  "selected_config": "LR  C=1    balanced",
+  "test_result": {
+    "config": "LR  C=1    balanced",
+    "accuracy": 0.9675,
+    "balanced_accuracy": 0.9569,
+    "macro_f1": 0.9323,
+    "malware_precision": 0.8314,
+    "malware_recall": 0.9427,
+    "malware_f1": 0.8836,
+    "false_positive_rate": 0.0288,
+    "false_negative_rate": 0.0573,
+    "confusion_matrix": [
+      [
+        7416,
+        220
+      ],
+      [
+        66,
+        1085
+      ]
+    ],
+    "roc_auc": 0.9785,
+    "pr_auc": 0.8978,
+    "fit_seconds": 64.9,
+    "note": "refit on train+validation; test evaluated once",
+    "family": "Logistic Regression"
+  },
+  "caveats": [
+    "All configurations were scored on validation; the test split was used once, by the winning configuration only.",
+    "Single split; no repeated runs or confidence intervals.",
+    "No probability calibration was fitted.",
+    "Accuracy is not a safe selection metric here: the count-only control reaches high accuracy without using which features are set."
+  ]
+}

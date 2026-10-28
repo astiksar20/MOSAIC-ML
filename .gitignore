@@ -1,1 +1,17 @@
-data/mh100k/*.csv
+# Training data (download MH-100K separately; see README)
+data/mh100k/*.npz
+data/mh100k/mh100_labels.csv
+data/processed/
+# Needed at runtime - keep:
+!data/mh100k/mh100-features-all.csv
+
+# Large regenerable intermediates
+reports/results/feature_frequency_by_class.csv
+reports/results/*.npy
+
+# Local
+__pycache__/
+*.pyc
+storage/*.db
+dashboard/node_modules/
+.env

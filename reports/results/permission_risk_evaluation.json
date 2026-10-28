@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "dataset": "MH-100K",
+    "label_rule": "vt_detection >= 4",
+    "split_seed": 42,
+    "split_scheme": "70/15/15 stratified, deduplicated",
+    "n_train": 41003,
+    "n_train_malicious": 5370,
+    "n_train_benign": 35633,
+    "permission_set": "Ogwara et al. 2024 Table 1, P1-P15",
+    "n_features": 24833
+  },
+  "weights": [
+    {
+      "permission": "WRITE_EXTERNAL_STORAGE",
+      "alpha": 0.9731843575418995,
+      "beta": 0.7239356776022227,
+      "r": 0.5183256507572442,
+      "n_malicious_using": 5226,
+      "n_benign_using": 25796
+    },
+    {
+      "permission": "READ_PHONE_STATE",
+      "alpha": 0.9057728119180634,
+      "beta": 0.30272500210479053,
+      "r": 0.7947155060294883,
+      "n_malicious_using": 4864,
+      "n_benign_using": 10787
+    },
+    {
+      "permission": "ACCESS_COARSE_LOCATION",
+      "alpha": 0.7653631284916201,
+      "beta": 0.33022759801307777,
+      "r": 0.7159742320517253,
+      "n_malicious_using": 4110,
+      "n_benign_using": 11767
+    },
+    {
+      "permission": "ACCESS_FINE_LOCATION",
+      "alpha": 0.7536312849162011,
+      "beta": 0.338899334886201,
+      "r": 0.7058513609172029,
+      "n_malicious_using": 4047,
+      "n_benign_using": 12076
+    },
+    {
+      "permission": "GET_TASKS",
+      "alpha": 0.7443202979515828,
+      "beta": 0.16756938792692166,
+      "r": 0.7871435708955845,
+      "n_malicious_using": 3997,
+      "n_benign_using": 5971
+    },
+    {
+      "permission": "READ_EXTERNAL_STORAGE",
+      "alpha": 0.907635009310987,
+      "beta": 0.4932225745797435,
+      "r": 0.6782100952064283,
+      "n_malicious_using": 4874,
+      "n_benign_using": 17575
+    },
+    {
+      "permission": "SYSTEM_ALERT_WINDOW",
+      "alpha": 0.6357541899441341,
+      "beta": 0.14604439704768052,
+      "r": 0.7368214523228857,
+      "n_malicious_using": 3414,
+      "n_benign_using": 5204
+    },
+    {
+      "permission": "READ_LOGS",
+      "alpha": 0.4960893854748603,
+      "beta": 0.08191844638396992,
+      "r": 0.674870738548636,
+      "n_malicious_using": 2664,
+      "n_benign_using": 2919
+    },
+    {
+      "permission": "MOUNT_UNMOUNT_FILESYSTEMS",
+      "alpha": 0.6733705772811918,
+      "beta": 0.09802710970168102,
+      "r": 0.7793343350784463,
+      "n_malicious_using": 3616,
+      "n_benign_using": 3493
+    },
+    {
+      "permission": "CAMERA",
+      "alpha": 0.7640595903165736,
+      "beta": 0.30062021160160524,
+      "r": 0.7310046748136221,
+      "n_malicious_using": 4103,
+      "n_benign_using": 10712
+    },
+    {
+      "permission": "RECORD_AUDIO",
+      "alpha": 0.5702048417132216,
+      "beta": 0.15533353913507142,
+      "r": 0.6939977706145415,
+      "n_malicious_using": 3062,
+      "n_benign_using": 5535
+    },
+    {
+      "permission": "GET_ACCOUNTS",
+      "alpha": 0.288268156424581,
+      "beta": 0.14640922740156598,
+      "r": 0.4960474154332268,
+      "n_malicious_using": 1548,
+      "n_benign_using": 5217
+    },
+    {
+      "permission": "CALL_PHONE",
+      "alpha": 0.39385474860335196,
+      "beta": 0.09634327729913282,
+      "r": 0.5965815043588587,
+      "n_malicious_using": 2115,
+      "n_benign_using": 3433
+    },
+    {
+      "permission": "WRITE_SETTINGS",
+      "alpha": 0.678026070763501,
+      "beta": 0.22119944994808183,
+      "r": 0.7266684779596232,
+      "n_malicious_using": 3641,
+      "n_benign_using": 7882
+    },
+    {
+      "permission": "SEND_SMS",
+      "alpha": 0.11843575418994413,
+      "beta": 0.024499761457076306,
+      "r": 0.3399030839287893,
+      "n_malicious_using": 636,
+      "n_benign_using": 873
+    }
+  ],
+  "evaluation": {
+    "train": {
+      "n": 41003,
+      "n_defined": 34647,
+      "n_insufficient_evidence": 6356,
+      "pct_insufficient": 15.501,
+      "mean_k": 4.418,
+      "roc_auc": 0.7663,
+      "pr_auc": 0.2743,
+      "mean_score_benign": 0.6464,
+      "mean_score_malware": 0.6908,
+      "median_score_benign": 0.6603,
+      "median_score_malware": 0.6954,
+      "insufficient_benign": 6283,
+      "insufficient_malware": 73
+    },
+    "validation": {
+      "n": 8786,
+      "n_defined": 7421,
+      "n_insufficient_evidence": 1365,
+      "pct_insufficient": 15.536,
+      "mean_k": 4.393,
+      "roc_auc": 0.7649,
+      "pr_auc": 0.2753,
+      "mean_score_benign": 0.6462,
+      "mean_score_malware": 0.6914,
+      "median_score_benign": 0.6603,
+      "median_score_malware": 0.6953,
+      "insufficient_benign": 1352,
+      "insufficient_malware": 13
+    },
+    "test": {
+      "n": 8787,
+      "n_defined": 7460,
+      "n_insufficient_evidence": 1327,
+      "pct_insufficient": 15.102,
+      "mean_k": 4.447,
+      "roc_auc": 0.7734,
+      "pr_auc": 0.2804,
+      "mean_score_benign": 0.6461,
+      "mean_score_malware": 0.691,
+      "median_score_benign": 0.6573,
+      "median_score_malware": 0.696,
+      "insufficient_benign": 1315,
+      "insufficient_malware": 12
+    }
+  }
+}

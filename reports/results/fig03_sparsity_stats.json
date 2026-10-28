@@ -1,0 +1,28 @@
+{
+  "n_samples": 101934,
+  "n_features": 24833,
+  "stored_nonzeros": 185917518,
+  "density": 0.0734466611323521,
+  "active_features_per_app": {
+    "min": 3,
+    "p5": 39.0,
+    "p25": 1198.0,
+    "median": 1993.0,
+    "mean": 1823.9009358996998,
+    "p75": 2501.0,
+    "p99": 4038.0,
+    "max": 6472
+  },
+  "by_class": {
+    "0": {
+      "median": 2082.0,
+      "mean": 1988.800898691037
+    },
+    "1": {
+      "median": 42.0,
+      "mean": 273.60571428571427
+    }
+  },
+  "test_apk_active_features": 5,
+  "training_apps_with_le_5_active": 5
+}

@@ -1,0 +1,24 @@
+{
+    "status": "healthy",
+    "checks": {
+        "model_file": true,
+        "model_loads": true,
+        "feature_vocabulary": true,
+        "permission_weights": true
+    },
+    "model": "Logistic Regression",
+    "model_error": null,
+    "permission_weights_error": null,
+    "allowed_origins": [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
+    ],
+    "max_upload_mb": 150,
+    "nvd_api_key_configured": false,
+    "storage": {
+        "available": true,
+        "backend": "sqlite",
+        "total_scans": 1,
+        "persistence_note": "SQLite on an ephemeral container filesystem. History is lost when the instance restarts. Set DATABASE_URL for durable storage."
+    }
+}

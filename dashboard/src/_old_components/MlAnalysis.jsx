@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Cpu, ShieldCheck, ShieldAlert, Sparkles, BarChart3 } from 'lucide-react';
 
 export const MlAnalysis = ({ data }) => {
@@ -129,10 +129,11 @@ export const MlAnalysis = ({ data }) => {
 
           <div className="pt-4 border-t border-white/5 text-[11px] text-slate-400 font-mono flex items-center justify-between">
             <span>Classifier: Random Forest</span>
-            <span>Feature Mapping: 100,000 Dimensions</span>
+            <span>Feature Mapping: 24,833 Features</span>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
